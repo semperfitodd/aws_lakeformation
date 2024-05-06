@@ -2,7 +2,6 @@
 This Terraform project manages a variety of AWS resources, including S3 buckets, AWS Glue configurations, and Lake Formation settings. It's designed to ensure that only the correct roles have query access to these resources.
 ## Project Structure
 ```plaintext
-├── backend.tf
 ├── data.tf
 ├── glue.tf
 ├── lakeformation.tf
@@ -44,6 +43,7 @@ To install and start using this Terraform project, follow these steps:
 This is running on the `commoncrawl` S3 bucket which is huge.
 ![bucket_size.png](images%2Fbucket_size.png)
 
+See the documentation for the data [here](https://registry.opendata.aws/commoncrawl/).
 This job is set on a cron to run once a month, but you can start it manually in the AWS console.
 ![completed_glue_job.png](images%2Fcompleted_glue_job.png)
 ## Testing permissions
