@@ -9,6 +9,7 @@
 # .tfstate static_site
 *.tfstate
 *.tfstate.*
+backend.tf
 
 # plan static_site
 plan.out
