@@ -1,4 +1,4 @@
-# AWS LakeFormation with Glue
+# AWS Lake Formation with Glue
 This Terraform project manages a variety of AWS resources, including S3 buckets, AWS Glue configurations, and Lake Formation settings. It's designed to ensure that only the correct roles have query access to these resources.
 ## Project Structure
 ```plaintext
@@ -52,7 +52,7 @@ This job is set on a cron to run once a month, but you can start it manually in 
 ## Testing permissions
 To test the configuration and ensure that only the correct roles can query while others cannot, use the AWS CLI:
 ```bash
-aws athena start-query-execution \                            [10:09:39]
+aws athena start-query-execution \ 
     --query-string "SELECT * FROM data_50600a86b68063ce3940961a3222e0bf LIMIT 10;" \
     --query-execution-context Database=aws_lakeformation_poc_dqbn \
     --result-configuration OutputLocation=s3://aws-lakeformation-poc-dqbn/ \
@@ -79,7 +79,7 @@ cat temp/output.csv
 ```
 What if we use a different role? The role we are using has `AdministratorAccess`
 ```bash
-aws athena start-query-execution \                            [10:09:39]
+aws athena start-query-execution \  
     --query-string "SELECT * FROM data_50600a86b68063ce3940961a3222e0bf LIMIT 10;" \
     --query-execution-context Database=aws_lakeformation_poc_dqbn \
     --result-configuration OutputLocation=s3://aws-lakeformation-poc-dqbn/ \
@@ -91,7 +91,7 @@ aws athena start-query-execution \                            [10:09:39]
 ```
 Check the execution
 ```bash
-aws athena get-query-execution \                                                    [10:16:04]
+aws athena get-query-execution \   
     --output text --query 'QueryExecution.Status.State' \
     --query-execution-id a07eda91-43fa-4ed6-a7cc-acd93b58dcb3
 FAILED
